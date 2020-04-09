@@ -1,0 +1,83 @@
+<div>
+    <div>
+        <form id="formcreate" [formGroup]="formProducto">
+
+            <div>
+                <h3>Creación de producto</h3>
+            </div>
+            <div id="name">
+                <span>
+                    <label>Nombre</label>
+                    <input id="float-inputName" #nombre formControlName="nombre" pInputText>
+
+                </span>
+            </div>
+            <div id="valor">
+                <span>
+                    <label>Valor</label>
+                    <input id="float-inputValue" formControlName="valor"  #valor pInputText>
+
+                </span>
+            </div>
+            <div>
+                <div *ngIf="update; else lodUpdate">
+                    <button class="ui-button btn-fullw" [disabled]="!formProducto.valid" pButton label="Crear producto" (click)="onSave()"></button>
+                  </div>
+                  
+                  <ng-template #lodUpdate>
+                    <button class="ui-button btn-fullw" [disabled]="!formProducto.valid" pButton label="Update producto" (click)="onUpdate()"></button>
+                  </ng-template>
+
+
+            </div>
+
+        </form>
+    </div>
+</div>
+<br>
+<div>
+    <p-table #producto [value]="listProducto" [paginator]="true" [rows]="10" paginatorPosition="bottom">
+        <ng-template pTemplate="header">
+            <tr>
+                <th id="colHeaderCode" class="colheader">
+                    Codigo producto
+                </th>
+                <th id="colHeaderCodeOfferer" class="colheader">
+                    Valor
+                </th>
+                <th id="colHeaderSic" class="ui-md-2 colheader">
+                    Nombre
+                </th>
+                <th id="colHeaderNit" class="ui-md-2 colheader">
+                    Actualizar
+                </th>
+                <th id="colHeaderDownloadOffers" class="ui-md-2 colheader">
+                    Eliminar
+                </th>
+
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-listProducto>
+            <tr>
+                <td id="colValueCode" class="ui-md-2 colvalue">
+                    {{listProducto.codigoProducto}}
+                </td>
+                <td id="colValueCodeOfferer" class="ui-md-1 colvalue">
+                    {{listProducto.valor}}
+                </td>
+                <td id="colValueSic" class="ui-md-2 colvalue">
+                    {{listProducto.nombre}}
+                </td>
+                <td id="colValueNit" class="colvalue">
+                    <p-button id="downloadOffertsOffers" label="Actualizar" (click)="onGetId(listProducto.codigoProducto,listProducto.nombre,listProducto.valor)">
+                    </p-button>
+                </td>
+                <td id="colValueDownloadOfferes" class="colvalue">
+                    <p-button id="downloadOffertsOffers" label="Eliminar" (click)="onDelete(listProducto.codigoProducto)" >
+                    </p-button>
+                </td>
+
+            </tr>
+        </ng-template>
+    </p-table>
+</div>

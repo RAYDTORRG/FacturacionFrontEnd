@@ -1,0 +1,22 @@
+
+  <div id="wrapper">
+     <!-- Menú -->
+     <app-sidenav-menu></app-sidenav-menu>
+    <div id="content-wrapper" class="d-flex flex-column">    
+      <div id="content">      
+          <app-top-menu></app-top-menu>       
+          <div class="container-fluid">
+             <!--Title -->
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">   
+                <h1 class="h3 mb-0 text-gray-800">Sistema para facturación web</h1>               
+            </div>
+             <!-- Contenido -->
+            <div class="row">  
+              <router-outlet></router-outlet>           
+            </div>
+          </div> 
+      </div>
+      <app-footer></app-footer> 
+    </div>
+
+  </div>
